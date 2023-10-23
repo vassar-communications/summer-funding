@@ -1,0 +1,365 @@
+
+
+@import "~rfs";
+@import url("https://use.typekit.net/fla5eof.css");
+
+@import "_universal";
+
+@font-face{
+    font-family: 'Source Sans Variable';
+    font-weight: 200 900;
+    font-style: normal;
+    font-stretch: normal;
+    src: url('../fonts/WOFF2/VAR/SourceSansVariable-Roman.ttf.woff2') format('woff2'),
+         url('../fonts/WOFF/VAR/SourceSansVariable-Roman.ttf.woff') format('woff'),
+         url('../fonts/VAR/SourceSansVariable-Roman.ttf') format('truetype');
+}
+
+@font-face{
+    font-family: 'Source Sans Variable';
+    font-weight: 200 900;
+    font-style: italic;
+    font-stretch: normal;
+    src: url('../fonts/WOFF2/VAR/SourceSansVariable-Italic.ttf.woff2') format('woff2'),
+         url('../fonts/WOFF/VAR/SourceSansVariable-Italic.ttf.woff') format('woff'),
+         url('../fonts/VAR/SourceSansVariable-Italic.ttf') format('truetype');
+}
+
+body {
+  font-family: system-ui, Helvetica, sans-serif;
+  font-family: 'Source Sans Variable';
+  font-size: 1.1rem;
+}
+
+
+/*  LAYOUT
+    ====== */
+
+
+.note {
+  background: #eee;
+  border-left: 2px solid #333;
+  padding: 1rem;
+}
+.note:empty {
+  display: none;
+}
+
+@media (min-width: 50rem) {
+	.layout {
+	  display: flex;
+	  gap: 3rem;
+	}
+	.filter_controls {
+	  width: 30%;
+	}
+	.results-area {
+	  width: calc(100% - 30rem);
+	  width: 70%;
+	}
+}
+
+@media (min-width: 40rem) and (max-width: 50rem) {
+	form#filterForm {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+	}
+}
+
+.item--switch {
+  display: block;
+}
+fieldset {
+  margin-bottom: 1rem;
+  border: 1px solid #aaa;
+  border-radius: 0.4rem;
+}
+.filter_controls__inner {
+  padding: 2rem;
+  background: #f7f7f7;
+  position: sticky;
+  top: 1rem;
+  overflow-y: auto;
+  height: fit-content;
+  max-height: calc(100vh - 6rem);
+/*  box-shadow: 0 0.4rem 0.4rem #ddd;
+  border: 1px solid #ddd;
+  border-left: none; */
+}
+
+p.error {
+  display: inline-block;
+  font-size: 2rem;
+  color: #666;
+  margin: 0 !important;
+}
+
+.center-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: calc(100vh - 16rem);
+}
+body {
+  margin: 0;
+}
+
+button,
+.button {
+    background-color: #951829;
+    border: none;
+    color: #fff;
+    appearance: none;
+    font-size: 1rem;
+    padding: 0.4rem 1rem;
+    border-radius: 0.4rem;
+    text-decoration: none;
+}
+.button-large {
+  border-radius: 0.6rem;
+  font-size: 1.4rem;
+  padding: 1rem 1.4rem;
+}
+button:hover,
+button:focus,
+.button:hover,
+.button:focus {
+  cursor: pointer;
+  background-color: #000;
+}
+
+.item {
+    border-bottom: 1px solid #aaa;
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    max-width: 40rem;
+}
+.item-title {
+  font-size: 1.6rem;
+    margin-bottom: 0;
+}
+a {
+  color: #951829;
+  transition: 0.3s all ease;
+}
+a:hover,
+a:focus {
+  background-color: #951829;
+  color: #fff;
+  text-decoration: none;
+}
+.grid-item {
+    border-top: 1px solid #ccc;
+    padding: 0.4rem 0;
+}
+
+b.item-label {
+    display: block;
+    font-size: 0.9rem;
+}
+.unfiltered .start-over-link {
+  display: none;
+}
+.results-info {
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    padding-bottom: 0.6rem;
+}
+
+a.start-over-link {
+  margin-left: 0.6rem;
+}
+
+.filter_controls summary {
+  font-weight: bold;
+  margin-bottom: 0.3rem;
+}
+.filter_controls summary:hover {
+  color: #951829;
+  cursor: pointer;
+}
+.filter_controls details {
+  padding: 0.3rem 0;
+  border-bottom: 1px solid #ccc;
+}
+.filter_controls details[open] {
+  padding: 0.3rem 0 1rem 0;
+}
+@media (min-width: 50rem) {
+	.details-grid {
+	  display: grid;
+	  grid-template-columns: 1fr 1fr;
+	}
+}
+.masthead {
+    position: relative;
+}
+.masthead-logo {
+    position: relative;
+    z-index: 10;
+}
+.masthead-logo a {
+	display: block;
+    background: #000;
+    padding: 1.6rem 0.8rem 0.6rem 0.8rem;
+
+    &:hover,
+    &:focus {
+      background: #fff;
+
+      path {
+        fill: #000;
+      }
+    }
+}
+@media (min-width: 50rem) {
+  .masthead {
+    margin-bottom: 2rem;
+  }
+	.masthead-logo a {
+		left: 2rem;
+	    position: absolute;
+	}
+}
+.masthead svg {
+  height: 2rem;
+  width: 10rem;
+}
+.masthead svg path {
+  fill: #951829;
+  fill: #fff;
+  transition: 0.4s all ease;
+}
+.masthead h1 {
+  margin: 0;
+  font-family: freight-big-pro;
+  @include font-size(5rem);
+  letter-spacing: -0.06em;
+  font-style: italic;
+  text-transform: uppercase;
+  line-height: 0.76;
+  word-spacing: 0.3em;
+  color: #a00;
+  text-align: center;
+  padding: 0;
+  padding: 2rem 0 0 0;
+}
+
+
+@media (min-width: 50rem) {
+	.masthead h1 {
+
+      color: #fff;
+      padding: 0 0 3rem 1rem;
+      text-align: left;
+
+	  position: absolute;
+	  bottom: 0;
+	  left: 2rem;
+	  z-index: 10;
+	}
+}
+
+.masthead-banner {
+	width: 100%;
+}
+.unfiltered #results-count,
+.default-results {
+  display: none;
+}
+.unfiltered .default-results {
+  display: block;
+}
+.default-results {
+  color: #666;
+}
+.contact__none {
+  display: none;
+}
+.noContact a {
+  display: none;
+}
+.noContact .contact__none {
+  display: inline-block;
+}
+.footer {
+    margin-top: 2rem;
+}
+
+
+.main-content {
+    padding: 2rem;
+}
+
+.intro-content {
+    max-width: 46rem;
+    margin: 0 auto 4rem auto;
+}
+p {
+    font-size: 1.2rem;
+    font-variation-settings: "wght" 380;
+}
+.intro-text {
+    color: #641A2B;
+    font-variation-settings: "wght" 360;
+    margin-top: 0;
+
+    font-family: 'freight-big-pro';
+        @include font-size(2.3rem);
+        line-height: 1.1;
+}
+
+button#filterIt {
+    margin-top: 2rem;
+}
+
+.filter_controls details:last-child {
+    border: none;
+}
+
+.masthead-banner-area {
+    position: relative;
+}
+
+.masthead-banner {
+	display: block;
+	filter: grayscale(1);
+}
+.masthead-banner-area:before {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: linear-gradient(45deg, #d0953d 0%, #ab5762 100%);
+	mix-blend-mode: multiply;
+    z-index: 1;
+}
+
+
+
+
+.filter_controls__title {
+  margin: 0;
+}
+
+div#results-count {
+    font-weight: bold;
+}
+
+.error-text {
+  display: none;
+  background: #ffccba;
+  padding: 0.2rem 0.6rem;
+}
+
+.no-app-link {
+  .app-link-btn {
+    display: none;
+  }
+  .error-text {
+    display: block;
+  }
+}
